@@ -1,9 +1,7 @@
 # 環境構築
 ①'docker-compose run web rails new . --force --no-deps --database=mysql --skip-test --webpacker'
 
-②’docker-compose run web rails new . --force --no-deps --database=mysql --skip-test --webpacker’
-
-③'docker-compose build'
+②'docker-compose build'
 
 # rails new で作成された config/database.yml を編集します
 ④'default: &default
