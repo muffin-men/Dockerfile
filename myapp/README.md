@@ -4,30 +4,33 @@
 ②'docker-compose build'
 
 # rails new で作成された config/database.yml を編集します
-④'default: &default
-  adapter: mysql2
-  encoding: utf8mb4
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("MYSQL_USERNAME", "root") %>
-  password: <%= ENV.fetch("MYSQL_PASSWORD", "password") %>
-  host: <%= ENV.fetch("MYSQL_HOST", "db") %>
+④
+ 'default: &default </br>
+  adapter: mysql2 </br>
+  encoding: utf8mb4 </br>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %> </br>
+  username: root </br>
+  password: password </br>
+  host: localhost </br>
+  host: db
 
-development:
-  <<: *default
-  database: myapp_development
-
+development: </br>
+  <<: *default </br>
+  database: myapp_development </br>
+  socket: '/tmp/mysql.sock' </br>
+  
 test:
-  <<: *default
-  database: myapp_test
+  <<: *default </br>
+  database: myapp_test </br>
 
-production:
-  <<: *default
-  database: myapp_production
-  username: myapp
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>'
+production: </br>
+  <<: *default </br>
+  database: myapp_production </br>
+  username: myapp </br>
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>' </br>
 
 # データベース作成
-⑤'docker-compose run web rake db:create'
+⑤'docker-compose run web rails db:create'
 
 # コンテナ起動
 ⑥'docker-compose up'
